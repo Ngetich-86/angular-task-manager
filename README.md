@@ -1,5 +1,53 @@
 # AngularTaskManager
 
+## Using Tailwind CSS with Angular
+
+You can integrate [Tailwind CSS](https://tailwindcss.com/) into your Angular project by following these steps:
+
+### 1. Install Tailwind CSS and dependencies
+
+Run the following command in your project root:
+
+```bash
+ng new my-project --style css
+cd my-project
+```
+
+### 2. Initialize Tailwind CSS
+
+```bash
+npm install tailwindcss @tailwindcss/postcss postcss --force
+```
+
+### 3. Create a .postcssrc.json file in the root of your project and add the @tailwindcss/postcss plugin to your PostCSS configuration.
+````json
+// .postcssrc.json
+{
+  "plugins": {
+    "@tailwindcss/postcss": {}
+  }
+}
+````
+
+### 4. Add Tailwind directives to your styles
+
+Add the Tailwind directives to your main CSS file (e.g., `src/styles.css`):
+
+```css
+@import "tailwindcss";
+```
+
+### 5. Start your development server
+
+Now you can use Tailwind utility classes in your Angular components. Start your server with:
+
+```bash
+ng serve
+```
+
+For more details, see the [official Tailwind CSS Angular guide](https://tailwindcss.com/docs/guides/angular).
+
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
 
 ## Development server
