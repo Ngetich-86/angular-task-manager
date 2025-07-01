@@ -1,12 +1,6 @@
-<main class="main">
-<h1 class="text-3xl font-bold underline text-amber-300">
-  Hello world!
-</h1>
-      <p class="text-lg">
-        This is a simple Angular application using Tailwind CSS for styling.
-      </p>
-      <p class="text-sm text-gray-500">
-        You can start editing the code in the <code>src/app/app.html</code> file.
-      </p>
+<app-navbar></app-navbar>
+<main class="p-4">
+  <app-home></app-home>
+  <router-outlet></router-outlet>
 </main>
-<router-outlet />
+<app-footer></app-footer>

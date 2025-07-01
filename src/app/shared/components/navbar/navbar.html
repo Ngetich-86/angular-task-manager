@@ -1,1 +1,29 @@
-<p>navbar works!</p>
+<nav class="bg-gray-800 text-white px-4 py-3 flex items-center justify-between shadow-md">
+  <!-- logo -->
+  <div class="text-lg font-bold">
+    <a routerLink="/" class="hover:text-gray-300">TaskManager</a>
+  </div>
+
+    <!-- Navigation Links -->
+  <ul class="flex gap-6 items-center">
+    <li>
+      <a routerLink="/dashboard" routerLinkActive="font-semibold border-b-2 border-white"
+         class="hover:text-gray-300 transition">Dashboard</a>
+    </li>
+    <li>
+      <a routerLink="/tasks" routerLinkActive="font-semibold border-b-2 border-white"
+         class="hover:text-gray-300 transition">Tasks</a>
+    </li>
+    <!-- <li *ngIf="!isLoggedIn">
+      <a routerLink="/login" routerLinkActive="font-semibold border-b-2 border-white"
+         class="hover:text-gray-300 transition">Login</a>
+    </li>
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/register" routerLinkActive="font-semibold border-b-2 border-white"
+         class="hover:text-gray-300 transition">Register</a>
+    </li> -->
+    <!-- <li *ngIf="isLoggedIn">
+      <button (click)="logout()" class="hover:text-red-400 transition">Logout</button>
+    </li> -->
+  </ul>
+</nav>
