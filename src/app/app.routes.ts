@@ -17,10 +17,10 @@ export const routes: Routes = [
     //   { path: 'login', component: LoginComponent },
     //   { path: 'register', component: RegisterComponent }
     ]
+  },
+  { 
+    path: 'tasks',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./tasks/tasks-module').then(m => m.TasksModule)
   }
-//   { 
-//     path: 'tasks',
-//     canActivate: [AuthGuard],
-//     loadChildren: () => import('./modules/tasks/tasks.module').then(m => m.TasksModule)
-//   },
 ];

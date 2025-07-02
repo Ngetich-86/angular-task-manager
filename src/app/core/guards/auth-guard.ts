@@ -12,8 +12,6 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     // Check if the user is authenticated
     if (this.auth.isAuthenticated()) {
-      // Optionally redirect authenticated users
-      this.router.navigate(['/dashboard']);
       return true; // Allow access to the route
     } else {
       this.router.navigate(['/login']); // Redirect to login if not authenticated
