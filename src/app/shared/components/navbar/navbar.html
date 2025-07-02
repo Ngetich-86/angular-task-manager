@@ -7,31 +7,23 @@
     <!-- Navigation Links -->
   <ul class="flex gap-6 items-center">
     <li>
-      <a routerLink="/dashboard" routerLinkActive="font-semibold border-b-2 border-white"
-         class="hover:text-gray-300 transition">Dashboard</a>
-    </li>
-    <li>
       <a routerLink="/tasks" routerLinkActive="font-semibold border-b-2 border-white"
          class="hover:text-gray-300 transition">Tasks</a>
     </li>
-    <li>
-      <a routerLink="/login" routerLinkActive="font-semibold border-b-2 border-white"
-         class="hover:text-gray-300 transition">Login</a>
-    </li>
-    <li>
-      <a routerLink="/register" routerLinkActive="font-semibold border-b-2 border-white"
-         class="hover:text-gray-300 transition">Register</a>
-    </li>
-    <!-- <li *ngIf="!isLoggedIn">
-      <a routerLink="/login" routerLinkActive="font-semibold border-b-2 border-white"
-         class="hover:text-gray-300 transition">Login</a>
-    </li>
-    <li *ngIf="!isLoggedIn">
-      <a routerLink="/register" routerLinkActive="font-semibold border-b-2 border-white"
-         class="hover:text-gray-300 transition">Register</a>
-    </li> -->
-    <!-- <li *ngIf="isLoggedIn">
-      <button (click)="logout()" class="hover:text-red-400 transition">Logout</button>
-    </li> -->
+    <ng-container *ngIf="!(currentUser$ | async); else loggedIn">
+      <li>
+        <a routerLink="/login" routerLinkActive="font-semibold border-b-2 border-white"
+           class="hover:text-gray-300 transition">Login</a>
+      </li>
+      <li>
+        <a routerLink="/register" routerLinkActive="font-semibold border-b-2 border-white"
+           class="hover:text-gray-300 transition">Register</a>
+      </li>
+    </ng-container>
+    <ng-template #loggedIn>
+      <li>
+        <button (click)="logout()" class="hover:text-red-400 transition">Logout</button>
+      </li>
+    </ng-template>
   </ul>
 </nav>
