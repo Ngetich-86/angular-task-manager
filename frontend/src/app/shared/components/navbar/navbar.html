@@ -1,0 +1,46 @@
+<nav class="bg-gray-900 text-white px-4 py-3 shadow-md w-full">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+    <!-- logo -->
+    <div class="flex items-center justify-between w-full md:w-auto">
+      <a routerLink="/" class="text-2xl font-bold tracking-tight text-indigo-400 hover:text-indigo-300 transition">TaskManager</a>
+      <button class="md:hidden ml-2 text-gray-400 hover:text-white focus:outline-none" >
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Navigation Links -->
+    <ul class="flex-col md:flex-row flex md:flex gap-6 items-center w-full md:w-auto mt-4 md:mt-0">
+      <li>
+        <a routerLink="/tasks" routerLinkActive="font-semibold border-b-2 border-indigo-400"
+           class="hover:text-indigo-300 transition">Tasks</a>
+      </li>
+      <ng-container *ngIf="!(currentUser$ | async); else loggedIn">
+        <li>
+          <a routerLink="/login" routerLinkActive="font-semibold border-b-2 border-indigo-400"
+             class="hover:text-indigo-300 transition">Login</a>
+        </li>
+        <li>
+          <a routerLink="/register" routerLinkActive="font-semibold border-b-2 border-indigo-400"
+             class="hover:text-indigo-300 transition">Register</a>
+        </li>
+      </ng-container>
+      <ng-template #loggedIn>
+        <li class="relative group">
+          <button class="flex items-center space-x-2 focus:outline-none group-hover:text-indigo-300">
+            <span class="text-gray-200 font-semibold">Mkenya Daima</span>
+            <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <!-- User Dropdown Menu -->
+          <div class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-20 hidden group-hover:block">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-200 hover:bg-indigo-600">Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-200 hover:bg-indigo-600">Settings</a>
+            <a href="#" class="block px-4 py-2 text-sm text-red-400 hover:bg-red-600" (click)="logout()">Logout</a>
+          </div>
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+</nav>
