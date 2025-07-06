@@ -47,7 +47,7 @@ cd backend
 
 2. Build and run the Spring Boot application:
 ```bash
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
 The backend server will start on `http://localhost:8080`
