@@ -1,0 +1,4 @@
+### HTTP Request to test the database connection
+GET http://localhost:8081/db-test
+
+
