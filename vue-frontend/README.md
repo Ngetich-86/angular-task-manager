@@ -124,6 +124,42 @@ export default {
 
 - Unit tests: `pnpm test:unit`
 
----
 
-Feel free to customize this README as your project evolves!
+#### folder structure
+```src/
+├── assets/              # Tailwind CSS, images, icons, etc.
+│   └── main.css
+├── components/          # Reusable UI components
+│   ├── Navbar.vue
+│   ├── TaskCard.vue
+│   └── Loader.vue
+├── composables/         # Composable functions (reusable logic)
+│   └── useAuth.ts
+├── layouts/             # AppShells like MainLayout, AuthLayout
+│   └── MainLayout.vue
+├── pages/               # Views for routing
+│   ├── auth/
+│   │   ├── Login.vue
+│   │   └── Register.vue
+│   ├── dashboard/
+│   │   ├── Tasks.vue
+│   │   └── Profile.vue
+│   └── NotFound.vue
+├── router/              # Vue Router config
+│   └── index.ts
+├── services/            # API calls or firebase logic
+│   └── authService.ts
+├── stores/              # Pinia stores
+│   ├── authStore.ts
+│   └── taskStore.ts
+├── types/               # TypeScript interfaces and types
+│   ├── task.ts
+│   └── user.ts
+├── utils/               # Helper functions
+│   └── validateEmail.ts
+├── App.vue              # Root component
+├── main.ts              # App entry point
+└── tailwind.config.js
+└── postcss.config.js
+```
+```

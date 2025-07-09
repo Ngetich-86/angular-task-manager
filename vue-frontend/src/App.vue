@@ -1,27 +1,15 @@
-<!-- <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
-</template>
- -->
-<template>
-  <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
-    <h1 class="text-4xl font-bold text-amber-600">🚀 Tailwind is working! iiiiiiiiiiiiiisssssssssss</h1>
+  <div class="min-h-screen bg-gray-50 flex flex-col">
+    <Navbar />
+    <main class="container mx-auto px-4 py-8 flex-1">
+      <RouterView />
+    </main>
+    <Footer />
   </div>
 </template>
