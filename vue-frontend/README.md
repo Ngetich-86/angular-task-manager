@@ -1,45 +1,129 @@
-# vue-frontend
+# Vue 3 + Vite + Tailwind CSS v4 Starter
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is a starter template for building Vue 3 applications using Vite and Tailwind CSS v4.
 
-## Recommended IDE Setup
+> **Note:** This project uses [pnpm](https://pnpm.io/) as the package manager. Please ensure you have pnpm installed globally:
+>
+> ```bash
+> npm install -g pnpm
+> ```
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Prerequisites
 
-## Type Support for `.vue` Imports in TS
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [pnpm](https://pnpm.io/) (see above)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Getting Started
 
-## Customize configuration
+### 1. Install Dependencies
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### 2. Start the Development Server
 
-```sh
+```bash
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The app will be available at [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
 
-```sh
+### 3. Build for Production
+
+```bash
 pnpm build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### 4. Preview the Production Build
 
-```sh
-pnpm test:unit
+```bash
+pnpm preview
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Tailwind CSS v4 Setup
 
-```sh
-pnpm lint
+This project is pre-configured with Tailwind CSS v4.
+
+- **Tailwind config:** See `tailwind.config.js`
+- **PostCSS config:** See `postcss.config.js`
+- **Main CSS:** Tailwind is imported in `src/assets/main.css` and loaded in `src/main.ts`
+
+#### Example Tailwind Usage
+
+You can use Tailwind utility classes directly in your Vue components. For example, see `src/App.vue`:
+
+```vue
+<template>
+  <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
+    <h1 class="text-4xl font-bold text-amber-600">🚀 Tailwind is working!</h1>
+  </div>
+</template>
 ```
+
+#### Tailwind Directives in `main.css`
+
+```css
+@import "tailwindcss/preflight";
+@tailwind utilities;
+```
+
+> **Note:** If you want to use more Tailwind features, you can add `@tailwind base;` and `@tailwind components;` as needed.
+
+## Configuration
+
+### `tailwind.config.js`
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+### `postcss.config.js`
+```js
+// postcss.config.js
+import tailwindcss from '@tailwindcss/postcss'
+import autoprefixer from 'autoprefixer'
+
+export default {
+  plugins: [
+    tailwindcss(), // <- must have () — it's now a function
+    autoprefixer(),
+  ],
+}
+```
+
+### `src/assets/main.css`
+```css
+@import "tailwindcss/preflight";
+@tailwind utilities;
+```
+
+## Project Structure
+
+- `src/` - Vue source files
+- `src/assets/main.css` - Main CSS file with Tailwind imports
+- `tailwind.config.js` - Tailwind configuration
+- `postcss.config.js` - PostCSS configuration for Tailwind
+- `vite.config.ts` - Vite configuration
+
+## Linting & Formatting
+
+- Lint: `pnpm lint`
+- Format: `pnpm format`
+
+## Testing
+
+- Unit tests: `pnpm test:unit`
+
+---
+
+Feel free to customize this README as your project evolves!
