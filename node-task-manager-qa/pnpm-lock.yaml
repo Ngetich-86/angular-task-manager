@@ -8,12 +8,21 @@ importers:
 
   .:
     dependencies:
+      '@hono/node-server':
+        specifier: ^1.15.0
+        version: 1.15.0(hono@4.8.4)
+      '@neondatabase/serverless':
+        specifier: ^1.0.1
+        version: 1.0.1
       dotenv:
         specifier: ^17.2.0
         version: 17.2.0
       drizzle-orm:
         specifier: ^0.44.2
-        version: 0.44.2(@types/pg@8.15.4)(pg@8.16.3)
+        version: 0.44.2(@neondatabase/serverless@1.0.1)(@types/pg@8.15.4)(pg@8.16.3)
+      hono:
+        specifier: ^4.8.4
+        version: 4.8.4
     devDependencies:
       '@faker-js/faker':
         specifier: ^9.9.0
@@ -342,6 +351,19 @@ packages:
     resolution: {integrity: sha512-OEl393iCOoo/z8bMezRlJu+GlRGlsKbUAN7jKB6LhnKoqKve5DXRpalbItIIcwnCjs1k/FOPjFzcA6Qn+H+YbA==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
+  '@hono/node-server@1.15.0':
+    resolution: {integrity: sha512-MjmK4l5N4dQpZ9OSWN0tCj7ejuc7WvuWMzSKtc89bnknJykAeHxzRigXBTYZk85H6Awrii6RM59iUiUluApu2A==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: ^4
+
+  '@neondatabase/serverless@1.0.1':
+    resolution: {integrity: sha512-O6yC5TT0jbw86VZVkmnzCZJB0hfxBl0JJz6f+3KHoZabjb/X08r9eFA+vuY06z1/qaovykvdkrXYq3SPUuvogA==}
+    engines: {node: '>=19.0.0'}
+
+  '@types/node@22.16.3':
+    resolution: {integrity: sha512-sr4Xz74KOUeYadexo1r8imhRtlVXcs+j3XK3TcoiYk7B1t3YRVJgtaD3cwX73NYb71pmVuMLNRhJ9XKdoDB74g==}
+
   '@types/node@24.0.13':
     resolution: {integrity: sha512-Qm9OYVOFHFYg3wJoTSrz80hoec5Lia/dPp84do3X7dZvLikQvM1YpmvTBEdIr/e+U8HTkFjLHLnl78K/qjf+jQ==}
 
@@ -483,6 +505,10 @@ packages:
   get-tsconfig@4.10.1:
     resolution: {integrity: sha512-auHyJ4AgMz7vgS8Hp3N6HXSmlMdUyhSUrfBF16w153rxtLIEOE+HGqaBppczZvnHLqQJfiHotCYpNhl0lUROFQ==}
 
+  hono@4.8.4:
+    resolution: {integrity: sha512-KOIBp1+iUs0HrKztM4EHiB2UtzZDTBihDtOF5K6+WaJjCPeaW4Q92R8j63jOhvJI5+tZSMuKD9REVEXXY9illg==}
+    engines: {node: '>=16.9.0'}
+
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
@@ -559,6 +585,9 @@ packages:
     resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   undici-types@7.8.0:
     resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
@@ -727,6 +756,19 @@ snapshots:
 
   '@faker-js/faker@9.9.0': {}
 
+  '@hono/node-server@1.15.0(hono@4.8.4)':
+    dependencies:
+      hono: 4.8.4
+
+  '@neondatabase/serverless@1.0.1':
+    dependencies:
+      '@types/node': 22.16.3
+      '@types/pg': 8.15.4
+
+  '@types/node@22.16.3':
+    dependencies:
+      undici-types: 6.21.0
+
   '@types/node@24.0.13':
     dependencies:
       undici-types: 7.8.0
@@ -754,8 +796,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.2(@types/pg@8.15.4)(pg@8.16.3):
+  drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@types/pg@8.15.4)(pg@8.16.3):
     optionalDependencies:
+      '@neondatabase/serverless': 1.0.1
       '@types/pg': 8.15.4
       pg: 8.16.3
 
@@ -827,6 +870,8 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
+  hono@4.8.4: {}
+
   ms@2.1.3: {}
 
   pg-cloudflare@1.2.7:
@@ -893,6 +938,8 @@ snapshots:
       fsevents: 2.3.3
 
   typescript@5.8.3: {}
+
+  undici-types@6.21.0: {}
 
   undici-types@7.8.0: {}
 
