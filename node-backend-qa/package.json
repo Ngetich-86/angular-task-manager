@@ -1,0 +1,36 @@
+{
+  "name": "node-task-manager-qa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch ./src/server.ts",
+    "start": "node ./dist/index.js",
+    "build": "tsc",
+    "gen": "drizzle-kit generate",
+    "migrate": "tsx src/drizzle/migrate.ts",
+    "reset": "tsx src/drizzle/reset.ts",
+    "studio": "drizzle-kit studio",
+    "push": "drizzle-kit generate && tsx src/drizzle/migrate.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "dependencies": {
+    "@hono/node-server": "^1.15.0",
+    "@neondatabase/serverless": "^1.0.1",
+    "dotenv": "^17.2.0",
+    "drizzle-orm": "^0.44.2",
+    "hono": "^4.8.4"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "@types/node": "^24.0.13",
+    "@types/pg": "^8.15.4",
+    "drizzle-kit": "^0.31.4",
+    "pg": "^8.16.3",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
