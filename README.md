@@ -1,4 +1,4 @@
-# Angular Task Manager
+# Task Manager
 
 A modern task management application built with Angular frontend and Java Spring Boot backend.
 
