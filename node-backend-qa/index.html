@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .status {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .endpoints {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .endpoint {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-left: 4px solid #007bff;
+            border-radius: 3px;
+        }
+        .method {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .url {
+            color: #666;
+            font-family: monospace;
+        }
+        .description {
+            color: #333;
+            margin-top: 5px;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Task Manager API</h1>
+        
+        <div class="status">
+            ✅ Server is running successfully!
+        </div>
+        
+        <div class="endpoints">
+            <h3>📋 Available Endpoints:</h3>
+            
+            <div class="endpoint">
+                <div><span class="method">POST</span> <span class="url">/register</span></div>
+                <div class="description">Register a new user</div>
+            </div>
+            
+            <div class="endpoint">
+                <div><span class="method">POST</span> <span class="url">/login</span></div>
+                <div class="description">Authenticate user and get JWT token</div>
+            </div>
+            
+            <div class="endpoint">
+                <div><span class="method">GET</span> <span class="url">/tasks</span></div>
+                <div class="description">Get all tasks for authenticated user</div>
+            </div>
+            
+            <div class="endpoint">
+                <div><span class="method">POST</span> <span class="url">/tasks</span></div>
+                <div class="description">Create a new task</div>
+            </div>
+            
+            <div class="endpoint">
+                <div><span class="method">PUT</span> <span class="url">/tasks/:id</span></div>
+                <div class="description">Update a task</div>
+            </div>
+            
+            <div class="endpoint">
+                <div><span class="method">DELETE</span> <span class="url">/tasks/:id</span></div>
+                <div class="description">Delete a task</div>
+            </div>
+            
+            <div class="endpoint">
+                <div><span class="method">GET</span> <span class="url">/tasks/status/:status</span></div>
+                <div class="description">Get tasks by status</div>
+            </div>
+            
+            <div class="endpoint">
+                <div><span class="method">GET</span> <span class="url">/tasks/priority/:priority</span></div>
+                <div class="description">Get tasks by priority</div>
+            </div>
+            
+            <div class="endpoint">
+                <div><span class="method">GET</span> <span class="url">/tasks/category/:categoryId</span></div>
+                <div class="description">Get tasks by category</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📖 Check the <code>src/requests.http</code> file for example requests</p>
+            <p>🔧 Built with Hono, Drizzle ORM, and PostgreSQL</p>
+        </div>
+    </div>
+</body>
+</html> 
