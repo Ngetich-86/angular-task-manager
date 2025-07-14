@@ -45,5 +45,3 @@ export const tasks = pgTable("tasks", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
-
-
