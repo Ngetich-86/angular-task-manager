@@ -128,4 +128,99 @@ describe("UserService", () => {
         });
     });
 
-    
+    describe("getAllusers",() => {
+        it("should return all users", async () => {
+            // Arrange
+            (db.query.users.findMany as jest.Mock).mockResolvedValue(mockUser);
+            // Act
+            const userService = new UserService();
+            const result = await userService.getAllUsers();
+            // Assert
+            expect(db.query.users.findMany).toHaveBeenCalledWith({
+                columns: {
+                    id: true,
+                    fullname: true,
+                    email: true,
+                    role: true,
+                    isActive: true
+                }
+            });
+            expect(result).toEqual(mockUser);
+        });
+    });
+
+    describe("updateUserById", () => {
+        it("should update user details", async () => {
+            // Arrange
+            const id = "1";
+            const updateData = {
+                fullname: "Updated User",
+                email: "updated@example.com",
+                role: "user" as const,
+                isActive: true
+            };
+            const setMock = jest.fn().mockReturnThis();
+            const whereMock = jest.fn().mockResolvedValue(undefined);
+            (db.update as jest.Mock).mockReturnValue({
+                set: setMock,
+                where: whereMock
+            });
+
+            const userService = new UserService();
+            // Act
+            const result = await userService.updateUserById(id, updateData);
+            // Assert
+            expect(db.update).toHaveBeenCalledWith(users);
+            expect(setMock).toHaveBeenCalledWith(updateData);
+            expect(whereMock).toHaveBeenCalledWith(sql`${users.id} = ${id}`);
+            expect(result).toBe("User updated successfully");
+        });
+
+        it("should hash password if provided", async () => {
+            // Arrange
+            const id = "1";
+            const updateData = {
+                password: "newpassword"
+            };
+            const setMock = jest.fn().mockReturnThis();
+            const whereMock = jest.fn().mockResolvedValue(undefined);
+            (db.update as jest.Mock).mockReturnValue({
+                set: setMock,
+                where: whereMock
+            });
+            (bcrypt.hash as jest.Mock).mockResolvedValue("hashed_newpassword");
+            const userService = new UserService();
+            // Act
+            await userService.updateUserById(id, { ...updateData });
+            // Assert
+            expect(bcrypt.hash).toHaveBeenCalledWith("newpassword", 10);
+            expect(setMock).toHaveBeenCalledWith({ password: "hashed_newpassword" });
+        });
+    });
+
+    describe("getUserById", () => {
+        it("should return user by id", async () => {
+            // Arrange
+            (db.query.users.findFirst as jest.Mock).mockResolvedValue(mockUser[0]);
+            const userService = new UserService();
+            // Act
+            const result = await userService.getUserById("1");
+            // Assert
+            expect(db.query.users.findFirst).toHaveBeenCalledWith({
+                where: sql`${users.id} = ${"1"}`
+            });
+            expect(result).toEqual(mockUser[0]);
+        });
+        it("should return null if user not found", async () => {
+            // Arrange
+            (db.query.users.findFirst as jest.Mock).mockResolvedValue(null);
+            const userService = new UserService();
+            // Act
+            const result = await userService.getUserById("2");
+            // Assert
+            expect(db.query.users.findFirst).toHaveBeenCalledWith({
+                where: sql`${users.id} = ${"2"}`
+            });
+            expect(result).toBeNull();
+        });
+    });
