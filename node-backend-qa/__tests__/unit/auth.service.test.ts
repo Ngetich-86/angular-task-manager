@@ -2,6 +2,7 @@ import { UserService } from "../../src/auth/auth.services";
 import bcrypt from 'bcryptjs';
 import db from "../../src/drizzle/db";
 import { users } from "../../src/drizzle/schema";
+import { sql } from "drizzle-orm";
 
 jest.mock('bcryptjs');
 jest.mock('jsonwebtoken');
@@ -32,8 +33,8 @@ describe("UserService", () => {
                 password: "plaintext_password",
                 role: "user" as const
             };
-            (bcrypt.hash as jest.Mock).mockReturnValue("hashed_password");
-            (db.insert as jest.Mock).mockReturnValue({
+            (bcrypt.hash as jest.Mock).mockReturnValue("hashed_password");// Mock bcrypt hash function
+            (db.insert as jest.Mock).mockReturnValue({// Mock db insert function
              values: jest.fn().mockResolvedValue(undefined), // or a mock result
             });
             // Act
@@ -50,3 +51,30 @@ describe("UserService", () => {
         });
     })
 });
+
+    describe("getUserByEmail", () =>{
+        it("should return user by email", async () => {
+            //arrange
+            (db.query.users.findFirst as jest.Mock).mockResolvedValue(mockUser[0]);
+            //act
+            const userService = new UserService();
+            const result = await userService.getUserByEmail("test@example.com");
+            //assert
+            expect(db.query.users.findFirst).toHaveBeenCalledWith({
+                where: sql`${expect.anything()} = ${'test@example.com'}`
+            });
+            expect(result).toEqual(mockUser[0]);
+        });
+        it("should return null if user not found", async () => {
+            // Arrange
+            (db.query.users.findFirst as jest.Mock).mockResolvedValue(null);
+            // Act
+            const userService = new UserService();
+            const result = await userService.getUserByEmail("test@example.com");
+            // Assert
+            expect(db.query.users.findFirst).toHaveBeenCalledWith({
+                where: sql`${expect.anything()} = ${'test@example.com'}`
+            });
+            expect(result).toBeNull();
+        });
+    });
