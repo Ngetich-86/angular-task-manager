@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1752532234635" clover="3.2.0">
-  <project timestamp="1752532234635" name="All files">
-    <metrics statements="393" coveredstatements="46" conditionals="90" coveredconditionals="8" methods="83" coveredmethods="8" elements="566" coveredelements="62" complexity="0" loc="393" ncloc="393" packages="6" files="17" classes="17"/>
+<coverage generated="1752533230485" clover="3.2.0">
+  <project timestamp="1752533230485" name="All files">
+    <metrics statements="393" coveredstatements="64" conditionals="90" coveredconditionals="8" methods="83" coveredmethods="19" elements="566" coveredelements="91" complexity="0" loc="393" ncloc="393" packages="6" files="17" classes="17"/>
     <package name="src">
       <metrics statements="35" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="server.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\server.ts">
@@ -335,7 +335,7 @@
       </file>
     </package>
     <package name="src.task">
-      <metrics statements="101" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="39" coveredmethods="2"/>
+      <metrics statements="101" coveredstatements="25" conditionals="4" coveredconditionals="0" methods="39" coveredmethods="13"/>
       <file name="task.controllers.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\task\task.controllers.ts">
         <metrics statements="57" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="13" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -419,32 +419,32 @@
         <line num="34" count="0" type="stmt"/>
       </file>
       <file name="task.services.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\task\task.services.ts">
-        <metrics statements="25" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="2"/>
+        <metrics statements="25" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="13"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="75" count="2" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
+        <line num="86" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.validators">
