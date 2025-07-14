@@ -1,5 +1,6 @@
 import { UserService } from "../../src/auth/auth.services";
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import db from "../../src/drizzle/db";
 import { users } from "../../src/drizzle/schema";
 import { sql } from "drizzle-orm";
@@ -78,3 +79,53 @@ describe("UserService", () => {
             expect(result).toBeNull();
         });
     });
+
+       describe("loginUser", () => {
+        const validCredentials = {
+            email: 'test@example.com',
+            password: 'plaintext_password'
+        };
+        it("should return user and token on successful login", async () => {
+            //arrange
+            (db.query.users.findFirst as jest.Mock).mockResolvedValue(mockUser[0]);
+            (bcrypt.compare as jest.Mock).mockResolvedValue(true);
+            (jwt.sign as jest.Mock).mockReturnValue("jwt_token");
+            // Act
+            const userService = new UserService();
+            const result = await userService.loginUser(validCredentials);
+            // Assert
+            expect(bcrypt.compare).toHaveBeenCalledWith("plaintext_password", "hashed_password");
+            expect(db.query.users.findFirst).toHaveBeenCalledWith({
+                columns: {
+                    id: true,
+                    fullname: true,
+                    email: true,
+                    password: true,
+                    role: true
+                },
+                where: sql`${users.email} = ${validCredentials.email}`
+            });
+            const { password, ...userWithoutPassword } = mockUser[0];
+            expect(result).toEqual({
+                user: userWithoutPassword,
+                token: "jwt_token"
+            });
+        });
+        it('should throw error if user not found', async () => {
+            // Arrange
+            (db.query.users.findFirst as jest.Mock).mockResolvedValue(null);
+            // Act and Assert
+            const userService = new UserService();
+            await expect(userService.loginUser(validCredentials)).rejects.toThrow("User not found");
+        });
+        it('should throw error if password is invalid', async () => {
+            // Arrange
+            (db.query.users.findFirst as jest.Mock).mockResolvedValue(mockUser[0]);
+            (bcrypt.compare as jest.Mock).mockResolvedValue(false);
+            // Act and Assert
+            const userService = new UserService();
+            await expect(userService.loginUser(validCredentials)).rejects.toThrow("Invalid credentials");
+        });
+    });
+
+    
