@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1752529438573" clover="3.2.0">
-  <project timestamp="1752529438574" name="All files">
-    <metrics statements="393" coveredstatements="39" conditionals="90" coveredconditionals="8" methods="83" coveredmethods="6" elements="566" coveredelements="53" complexity="0" loc="393" ncloc="393" packages="6" files="17" classes="17"/>
+<coverage generated="1752532234635" clover="3.2.0">
+  <project timestamp="1752532234635" name="All files">
+    <metrics statements="393" coveredstatements="46" conditionals="90" coveredconditionals="8" methods="83" coveredmethods="8" elements="566" coveredelements="62" complexity="0" loc="393" ncloc="393" packages="6" files="17" classes="17"/>
     <package name="src">
       <metrics statements="35" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="server.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\server.ts">
@@ -133,14 +133,14 @@
       <metrics statements="63" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="0"/>
       <file name="db.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\drizzle\db.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
       </file>
       <file name="migrate.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\drizzle\migrate.ts">
         <metrics statements="15" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
@@ -181,13 +181,13 @@
       </file>
       <file name="schema.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\drizzle\schema.ts">
         <metrics statements="9" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
       </file>
@@ -335,7 +335,7 @@
       </file>
     </package>
     <package name="src.task">
-      <metrics statements="101" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="39" coveredmethods="0"/>
+      <metrics statements="101" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="39" coveredmethods="2"/>
       <file name="task.controllers.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\task\task.controllers.ts">
         <metrics statements="57" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="13" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -419,15 +419,15 @@
         <line num="34" count="0" type="stmt"/>
       </file>
       <file name="task.services.ts" path="D:\codes\angular-task-manager\node-backend-qa\src\task\task.services.ts">
-        <metrics statements="25" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="25" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
