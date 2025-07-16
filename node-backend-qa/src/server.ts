@@ -74,3 +74,4 @@ serve({
 // console.log('Routes registered:', app.routes);
 console.log(`✅ Server is running on http://localhost:${PORT}`);
 // assert(process.env.PORT, "PORT is required");
+export default app; // Export the app for testing or further configuration

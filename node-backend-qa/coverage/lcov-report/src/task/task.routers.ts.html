@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">59.37% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/32</span>
+                <span class='fraction'>19/32</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,74 +97,74 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Hono } from "hono";</span>
-<span class="cstat-no" title="statement not covered" >import { TaskController } from "./task.controllers";</span>
-<span class="cstat-no" title="statement not covered" >import { userRoleAuth } from "../middlewares/bearAuth";</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Hono } from "hono";
+import { TaskController } from "./task.controllers";
+import { userRoleAuth } from "../middlewares/bearAuth";
 &nbsp;
-const taskController = <span class="cstat-no" title="statement not covered" >new TaskController();</span>
-const taskRouter = <span class="cstat-no" title="statement not covered" >new Hono();</span>
+const taskController = new TaskController();
+const taskRouter = new Hono();
 &nbsp;
 // All routes require user authentication
 // User ID is extracted from JWT token
 &nbsp;
-<span class="cstat-no" title="statement not covered" >taskRouter.post("/tasks", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.createTask(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getAllTasks(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks/:id", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTaskById(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.put("/tasks/:id", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.updateTask(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.delete("/tasks/:id", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.deleteTask(c))</span>;</span>
+taskRouter.post("/tasks", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.createTask(c))</span>;
+taskRouter.get("/tasks", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getAllTasks(c))</span>;
+taskRouter.get("/tasks/:id", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTaskById(c))</span>;
+taskRouter.put("/tasks/:id", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.updateTask(c))</span>;
+taskRouter.delete("/tasks/:id", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.deleteTask(c))</span>;
 &nbsp;
 // Filters
 &nbsp;
 // Get tasks by status
 // e.g. GET /tasks/status/completed
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks/status/:status", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTasksByStatus(c))</span>;</span>
+taskRouter.get("/tasks/status/:status", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTasksByStatus(c))</span>;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks/priority/:priority", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTasksByPriority(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks/category/:categoryId", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTasksByCategory(c))</span>;</span>
+taskRouter.get("/tasks/priority/:priority", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTasksByPriority(c))</span>;
+taskRouter.get("/tasks/category/:categoryId", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTasksByCategory(c))</span>;
 &nbsp;
 // Special
 &nbsp;
-<span class="cstat-no" title="statement not covered" >taskRouter.post("/tasks/:id/toggle", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.toggleTaskCompletion(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks/completed", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getCompletedTasks(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks/pending", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getPendingTasks(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks/due-today", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTasksDueToday(c))</span>;</span>
-<span class="cstat-no" title="statement not covered" >taskRouter.get("/tasks/overdue", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getOverdueTasks(c))</span>;</span>
+taskRouter.post("/tasks/:id/toggle", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.toggleTaskCompletion(c))</span>;
+taskRouter.get("/tasks/completed", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getCompletedTasks(c))</span>;
+taskRouter.get("/tasks/pending", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getPendingTasks(c))</span>;
+taskRouter.get("/tasks/due-today", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getTasksDueToday(c))</span>;
+taskRouter.get("/tasks/overdue", userRoleAuth, <span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >taskController.getOverdueTasks(c))</span>;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default taskRouter;</span>
+export default taskRouter;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -172,7 +172,7 @@ const taskRouter = <span class="cstat-no" title="statement not covered" >new Hon
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-14T22:47:10.329Z
+                at 2025-07-16T09:25:28.467Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
