@@ -16,7 +16,8 @@
     "test": "jest",
     "test:k6":"k6 run load_tests/basic_test.ts",
     "smoke:login":"k6 run load_tests/smoke/login.smoke.ts",
-    "smoke:register":"k6 run load_tests/smoke/register.smoke.ts"
+    "smoke:register":"k6 run load_tests/smoke/register.smoke.ts",
+    "smoke:task":"k6 run load_tests/smoke/task.smoke.ts"
   },
   "keywords": [],
   "author": "",
