@@ -14,7 +14,9 @@
     "studio": "drizzle-kit studio",
     "push": "drizzle-kit generate && tsx src/drizzle/migrate.ts",
     "test": "jest",
-    "test:k6":"k6 run load_tests/basic_test.ts"
+    "test:k6":"k6 run load_tests/basic_test.ts",
+    "smoke:login":"k6 run load_tests/smoke/login.smoke.ts",
+    "smoke:register":"k6 run load_tests/smoke/register.smoke.ts"
   },
   "keywords": [],
   "author": "",
