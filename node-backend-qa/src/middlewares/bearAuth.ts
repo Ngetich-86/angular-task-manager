@@ -52,6 +52,7 @@ export const checkRoles = (requiredRole: RequiredRole): MiddlewareHandler => {
 
         // Extract token from header
         const token = authHeader.split(" ")[1];
+        console.log('Raw token💢:', token);
         if (!token) {
             return c.json({ error: "Unauthorized - No token provided" }, 401);
         }

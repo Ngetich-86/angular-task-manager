@@ -59,6 +59,20 @@ export const rateLimiter = (config: Partial<RateLimitConfig> = {}): MiddlewareHa
   const finalConfig = { ...defaultConfig, ...config };
   
   return async (c, next) => {
+    // Bypass rate limiting for test user on POST /login
+    if (
+      c.req.path === '/login' &&
+      c.req.method === 'POST'
+    ) {
+      let body: any = {};
+      try {
+        body = await c.req.json();
+      } catch {}
+      if (body && body.email === 'gideon.ngetich@outlook.com') {
+        return await next();
+      }
+    }
+
     const clientIP = getClientIP(c);
     const now = Date.now();
     
@@ -146,6 +160,7 @@ export const getRateLimitInfo = (ip: string) => {
     limit: defaultConfig.maxRequests
   };
 };
+
 
 
 
