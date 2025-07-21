@@ -286,7 +286,7 @@ Content-Type: application/json
 
 # Get all categories for the authenticated user
 GET http://localhost:3000/categories
-Authorization: Bearer your_jwt_token_here
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJnaWRlb24ubmdldGljaEBvdXRsb29rLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUzMTA2MTAyLCJleHAiOjE3NTM3MTA5MDJ9.kHKbmytrL4CfGhqsvNe0rrSzg5P49XFHH9PfY2BK2-w
 
 ###
 

@@ -66,14 +66,13 @@ app.get("/", async (c) => {
   // }
   return c.json({ message: "Server is running" });
 });
-
 app.onError((err, c) => {
   console.error(`❌ Server Error: ${err.message}`);
   console.error(err.stack);
   return c.json({
     error: "Internal Server Error",
-    message: err.message,
-    stack: err.stack,
+    message: err.message, 
+    stack: err.stack,     // <-- expose stack for debugging
   }, 500);
 });
 

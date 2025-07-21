@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/validators/user.validator.ts</title>
+    <title>Code coverage report for src/validators/category.validator.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/validators</a> user.validator.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/validators</a> category.validator.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -78,11 +78,9 @@
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
-<a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -97,21 +95,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { z } from "zod";
 &nbsp;
-export const registerSchema = z.object({
-  fullname: z.string().min(3).max(50),
-  email: z.string().email(),
-  password: z.string().min(6).max(100),
-  role: z.enum(["user", "admin", "superadmin", "disabled"]).optional(),
+export const createCategorySchema = z.object({
+  name: z.string().min(1).max(100),
+  description: z.string().min(1).max(255),
+  color: z.string().min(4).max(7).regex(/^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/, "Invalid color hex code").optional(),
 });
 &nbsp;
-export const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6).max(100),
+export const updateCategorySchema = z.object({
+  name: z.string().min(1).max(100).optional(),
+  description: z.string().min(1).max(255).optional(),
+  color: z.string().min(4).max(7).regex(/^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/, "Invalid color hex code").optional(),
 });
 &nbsp;
-export type RegisterInput = z.infer&lt;typeof registerSchema&gt;;
-export type LoginInput = z.infer&lt;typeof loginSchema&gt;;
-&nbsp;</pre></td></tr></table></pre>
+export type CreateCategoryInput = z.infer&lt;typeof createCategorySchema&gt;;
+export type UpdateCategoryInput = z.infer&lt;typeof updateCategorySchema&gt;; </pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

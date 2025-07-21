@@ -45,6 +45,9 @@ Below are sample results from our automated test runs:
 ### Smoke Test (Register)
 ![Smoke Register Test Result](images-test/smoke-register.png)
 
+### Soak Test (Tasks
+![Task Soak Test Result](images-test/soak-task.png))
+
 <!-- Add more images as you generate them, e.g.:
 ![Smoke Task Test Result](images-test/smoke-task.png)
 ![Stress Test Result](images-test/stress-task.png)
