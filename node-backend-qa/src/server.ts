@@ -6,6 +6,7 @@ import { readFile } from "fs/promises";
 import assert from "assert";
 import userRouter from "./auth/auth.routers";
 import taskRouter from "./task/task.routers";
+import categoryRouter from "./categories/categories.route";
 import { logger } from "./middlewares/logger";
 import { apiRateLimiter, authRateLimiter } from "./middlewares/rateLimiter";
 
@@ -34,6 +35,7 @@ app.use("/allusers", apiRateLimiter);
 // Register all routes
 app.route('/', userRouter);
 app.route('/', taskRouter);
+app.route('/', categoryRouter);
 
 // Error handling middleware
 app.onError((err, c) => {
@@ -63,6 +65,16 @@ app.get("/", async (c) => {
   //   return c.text(err.message, 500);
   // }
   return c.json({ message: "Server is running" });
+});
+
+app.onError((err, c) => {
+  console.error(`❌ Server Error: ${err.message}`);
+  console.error(err.stack);
+  return c.json({
+    error: "Internal Server Error",
+    message: err.message,
+    stack: err.stack,
+  }, 500);
 });
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;

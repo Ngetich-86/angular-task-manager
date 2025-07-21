@@ -267,3 +267,51 @@ Content-Type: application/json
 # 2. Copy the token from the response
 # 3. Replace "your_jwt_token_here" with the actual token
 # 4. Uncomment the Authorization headers
+
+
+### Category Management Tests ###
+
+# Create a new category
+POST http://localhost:3000/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJnaWRlb24ubmdldGljaEBvdXRsb29rLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUzMTA2MTAyLCJleHAiOjE3NTM3MTA5MDJ9.kHKbmytrL4CfGhqsvNe0rrSzg5P49XFHH9PfY2BK2-w
+Content-Type: application/json
+
+{
+  "name": "Work",
+  "description": "Tasks related to work projects",
+  "color": "#FF5733"
+}
+
+###
+
+# Get all categories for the authenticated user
+GET http://localhost:3000/categories
+Authorization: Bearer your_jwt_token_here
+
+###
+
+# Get a specific category by ID
+GET http://localhost:3000/categories/1
+Authorization: Bearer your_jwt_token_here
+
+###
+
+# Update a category
+PUT http://localhost:3000/categories/1
+Authorization: Bearer your_jwt_token_here
+Content-Type: application/json
+
+{
+  "name": "Personal",
+  "description": "Personal tasks and reminders",
+  "color": "#33C1FF"
+}
+
+###
+
+# Delete a category
+DELETE http://localhost:3000/categories/1
+Authorization: Bearer your_jwt_token_here
+
+###
+

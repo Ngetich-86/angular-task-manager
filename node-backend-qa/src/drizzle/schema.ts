@@ -1,4 +1,4 @@
-import { pgTable, serial, text, boolean, timestamp, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, boolean, timestamp, pgEnum, integer } from "drizzle-orm/pg-core";
 
 
 // ✅ Enum
@@ -25,7 +25,7 @@ export const categories = pgTable("categories", {
   color: text("color").notNull().default("#FFFFFF"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
-  userId: serial("user_id").notNull().references(() => users.id, {
+  userId: integer("user_id").notNull().references(() => users.id, {
     onDelete: "cascade",
   })
 });
@@ -40,8 +40,8 @@ export const tasks = pgTable("tasks", {
   dueDate: timestamp("due_date").notNull(),
   priority: priorityEnum("priority").notNull(),
   completed: boolean("completed").notNull().default(false),
-  userId: serial("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
-  categoryId: serial("category_id").notNull().references(() => categories.id, { onDelete: "cascade" }),
+  userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  categoryId: integer("category_id").notNull().references(() => categories.id, { onDelete: "cascade" }),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

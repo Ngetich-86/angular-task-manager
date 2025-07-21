@@ -7,7 +7,7 @@ CREATE TABLE "categories" (
 	"color" text DEFAULT '#FFFFFF' NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"user_id" serial NOT NULL,
+	"user_id" integer NOT NULL,
 	CONSTRAINT "categories_name_unique" UNIQUE("name")
 );
 --> statement-breakpoint
@@ -19,8 +19,8 @@ CREATE TABLE "tasks" (
 	"due_date" timestamp NOT NULL,
 	"priority" "priority" NOT NULL,
 	"completed" boolean DEFAULT false NOT NULL,
-	"user_id" serial NOT NULL,
-	"category_id" serial NOT NULL,
+	"user_id" integer NOT NULL,
+	"category_id" integer NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL
 );

@@ -18,7 +18,8 @@
     "smoke:login":"k6 run load_tests/smoke/login.smoke.ts",
     "smoke:register":"k6 run load_tests/smoke/register.smoke.ts",
     "smoke:task":"k6 run load_tests/smoke/task.smoke.ts",
-    "stress:task":"k6 run load_tests/stress/tasks.stress.ts"
+    "stress:task":"k6 run load_tests/stress/tasks.stress.ts",
+    "soak:task":"k6 run load_tests/soak/tasks.soak.ts"
   },
   "keywords": [],
   "author": "",
