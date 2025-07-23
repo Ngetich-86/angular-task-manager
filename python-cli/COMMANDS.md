@@ -4,32 +4,31 @@
 
 ### Login
 ```bash
-taskmanager auth login <email> <password>
+python -m src.task_manager_cli.cli auth login
 ```
-Example:
-```bash
-taskmanager auth login user@example.com mypassword
-```
+You will be prompted for your email and password.
 
 ### Register
 ```bash
-taskmanager auth register <fullname> <email> <password>
+python -m src.task_manager_cli.cli auth register
 ```
-Example:
-```bash
-taskmanager auth register "John Doe" john@example.com securepassword123
-```
+You will be prompted for your full name, email, and password (with confirmation).
 
 ### View Current User
 ```bash
-taskmanager auth me
+python -m src.task_manager_cli.cli auth me
+```
+
+### Logout
+```bash
+python -m src.task_manager_cli.cli auth logout
 ```
 
 ## Tasks
 
 ### Create Task
 ```bash
-taskmanager tasks create <title> <category_id> <due_date> [--priority PRIORITY] [--description DESCRIPTION] [--status STATUS]
+python -m src.task_manager_cli.cli tasks create <title> <category_id> <due_date> [--priority PRIORITY] [--description DESCRIPTION] [--status STATUS]
 ```
 Options:
 - `--priority`: LOW, MEDIUM (default), HIGH
@@ -38,29 +37,27 @@ Options:
 
 Example:
 ```bash
-taskmanager tasks create "Finish project" 1 "2023-12-31T23:59:59" --priority HIGH --description "Final project deliverables"
+python -m src.task_manager_cli.cli tasks create "Finish project" 1 "2023-12-31" --priority HIGH --description "Final project deliverables"
 ```
 
 ### List Tasks
 ```bash
-taskmanager tasks list
+python -m src.task_manager_cli.cli tasks list
 ```
 
-### Complete Task
+### Show Task Details
 ```bash
-taskmanager tasks complete <task_id>
+python -m src.task_manager_cli.cli tasks show <task_id>
 ```
 
-## Categories
-
-### Create Category
+### Update Task
 ```bash
-taskmanager categories create <name> <description> [--color COLOR]
+python -m src.task_manager_cli.cli tasks update <task_id> [--title TITLE] [--description DESCRIPTION] [--status STATUS] [--due-date DUE_DATE] [--priority PRIORITY] [--category-id CATEGORY_ID]
 ```
 
-### List Categories
+### Delete Task
 ```bash
-taskmanager categories list
+python -m src.task_manager_cli.cli tasks delete <task_id>
 ```
 
 ## Global Options

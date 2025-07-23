@@ -12,26 +12,35 @@ pip install -e .
 
 ### Authentication
 ```bash
-# Login
-taskmanager auth login <email> <password>
+# Login (you will be prompted for email and password)
+python -m src.task_manager_cli.cli auth login
 
-# Register new user
-taskmanager auth register <fullname> <email> <password>
+# Register new user (you will be prompted for name, email, password)
+python -m src.task_manager_cli.cli auth register
 
 # View current user
-taskmanager auth me
+python -m src.task_manager_cli.cli auth me
+
+# Logout
+python -m src.task_manager_cli.cli auth logout
 ```
 
 ### Task Management
 ```bash
 # Create task
-taskmanager tasks create <title> <category_id> <due_date> [--priority PRIORITY]
+python -m src.task_manager_cli.cli tasks create <title> <category_id> <due_date> [--priority PRIORITY] [--description DESCRIPTION] [--status STATUS]
 
 # List tasks
-taskmanager tasks list
+python -m src.task_manager_cli.cli tasks list
 
-# Complete task
-taskmanager tasks complete <task_id>
+# Show task details
+python -m src.task_manager_cli.cli tasks show <task_id>
+
+# Update task
+python -m src.task_manager_cli.cli tasks update <task_id> [--title TITLE] [--description DESCRIPTION] [--status STATUS] [--due-date DUE_DATE] [--priority PRIORITY] [--category-id CATEGORY_ID]
+
+# Delete task
+python -m src.task_manager_cli.cli tasks delete <task_id>
 ```
 
 For full command documentation see [COMMANDS.md](COMMANDS.md)
