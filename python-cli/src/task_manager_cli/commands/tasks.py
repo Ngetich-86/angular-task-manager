@@ -1,9 +1,13 @@
 import typer
 from datetime import datetime
 from typing import Optional
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
 from task_manager_cli.utils.api import api_client
 from task_manager_cli.models import Task, Priority
 
+console = Console()
 app = typer.Typer()
 
 @app.command()
@@ -20,7 +24,7 @@ def create(
         try:
             due_date_dt = datetime.fromisoformat(due_date)
         except ValueError:
-            typer.echo("Invalid due date format. Use YYYY-MM-DD.", err=True)
+            console.print("[bold red]Invalid due date format. Use YYYY-MM-DD.[/bold red]")
             raise typer.Exit(code=1)
         response = api_client.request("POST", "/tasks", {
             "title": title,
@@ -31,9 +35,9 @@ def create(
             "category_id": category_id
         })
         task = Task(response)
-        typer.echo(f"Task created with ID: {task.id}")
+        console.print(f"[bold green]Task created with ID:[/bold green] {task.id}")
     except Exception as e:
-        typer.echo(f"Failed to create task: {e}", err=True)
+        console.print(f"[bold red]Failed to create task:[/bold red] {e}")
 
 @app.command()
 def list():
@@ -41,29 +45,26 @@ def list():
     try:
         response = api_client.request("GET", "/tasks")
         if not response:
-            typer.echo("No tasks found.")
+            console.print("[yellow]No tasks found.[/yellow]")
             return
         tasks = [Task(task_data) for task_data in response]
-        from rich.console import Console
-        from rich.table import Table
-        console = Console()
-        table = Table(title="Tasks")
-        table.add_column("ID")
-        table.add_column("Title")
-        table.add_column("Status")
-        table.add_column("Due Date")
-        table.add_column("Priority")
+        table = Table(title="[bold cyan]Tasks[/bold cyan]")
+        table.add_column("ID", style="bold")
+        table.add_column("Title", style="bold magenta")
+        table.add_column("Status", style="cyan")
+        table.add_column("Due Date", style="green")
+        table.add_column("Priority", style="yellow")
         for task in tasks:
             table.add_row(
                 str(task.id),
                 task.title,
                 task.status,
-                task.due_date.strftime("%Y-%m-%d"),
-                task.priority
+                task.due_date.strftime("%Y-%m-%d") if task.due_date else "-",
+                str(task.priority)
             )
         console.print(table)
     except Exception as e:
-        typer.echo(f"Failed to list tasks: {e}", err=True)
+        console.print(f"[bold red]Failed to list tasks:[/bold red] {e}")
 
 @app.command()
 def show(task_id: int = typer.Argument(..., help="Task ID")):
@@ -71,23 +72,20 @@ def show(task_id: int = typer.Argument(..., help="Task ID")):
     try:
         response = api_client.request("GET", f"/tasks/{task_id}")
         task = Task(response)
-        from rich.console import Console
-        from rich.panel import Panel
-        console = Console()
         panel = Panel(
             f"[bold]Title:[/bold] {task.title}\n"
             f"[bold]Description:[/bold] {task.description or '-'}\n"
             f"[bold]Status:[/bold] {task.status}\n"
-            f"[bold]Due Date:[/bold] {task.due_date.strftime('%Y-%m-%d')}\n"
+            f"[bold]Due Date:[/bold] {task.due_date.strftime('%Y-%m-%d') if task.due_date else '-'}\n"
             f"[bold]Priority:[/bold] {task.priority}\n"
             f"[bold]Category ID:[/bold] {task.category_id}\n"
-            f"[bold]Created At:[/bold] {task.created_at.strftime('%Y-%m-%d %H:%M:%S')}\n"
+            f"[bold]Created At:[/bold] {task.created_at.strftime('%Y-%m-%d %H:%M:%S') if task.created_at else '-'}\n"
             f"[bold]Updated At:[/bold] {task.updated_at.strftime('%Y-%m-%d %H:%M:%S') if task.updated_at else '-'}",
-            title=f"Task {task.id}", expand=False
+            title=f"[bold cyan]Task {task.id}[/bold cyan]", expand=False
         )
         console.print(panel)
     except Exception as e:
-        typer.echo(f"Failed to show task: {e}", err=True)
+        console.print(f"[bold red]Failed to show task:[/bold red] {e}")
 
 @app.command()
 def update(
@@ -113,25 +111,25 @@ def update(
                 due_date_dt = datetime.fromisoformat(due_date)
                 task_data["due_date"] = due_date_dt.isoformat()
             except ValueError:
-                typer.echo("Invalid due date format. Use YYYY-MM-DD.", err=True)
+                console.print("[bold red]Invalid due date format. Use YYYY-MM-DD.[/bold red]")
                 raise typer.Exit(code=1)
         if priority is not None:
             task_data["priority"] = priority.value
         if category_id is not None:
             task_data["category_id"] = category_id
         if not task_data:
-            typer.echo("No fields to update.", err=True)
+            console.print("[bold yellow]No fields to update.[/bold yellow]")
             raise typer.Exit(code=1)
         response = api_client.request("PUT", f"/tasks/{task_id}", task_data)
-        typer.echo(f"Task updated with ID: {task_id}")
+        console.print(f"[bold green]Task updated with ID:[/bold green] {task_id}")
     except Exception as e:
-        typer.echo(f"Failed to update task: {e}", err=True)
+        console.print(f"[bold red]Failed to update task:[/bold red] {e}")
 
 @app.command()
 def delete(task_id: int = typer.Argument(..., help="Task ID")):
     """Delete a task"""
     try:
         api_client.request("DELETE", f"/tasks/{task_id}")
-        typer.echo(f"Task deleted with ID: {task_id}")
+        console.print(f"[bold green]Task deleted with ID:[/bold green] {task_id}")
     except Exception as e:
-        typer.echo(f"Failed to delete task: {e}", err=True)
+        console.print(f"[bold red]Failed to delete task:[/bold red] {e}")
