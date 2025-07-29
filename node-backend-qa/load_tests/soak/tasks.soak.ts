@@ -33,7 +33,7 @@ export const options = {
 export function setup() {
     const payload = JSON.stringify({ email: TEST_USER_EMAIL, password: TEST_USER_PASSWORD });
     const params = {
-        headers: { 'Content-Type': 'application/json', 'User-Agent': 'k6-soak-test/1.0' },
+        headers: { 'content-type': 'application/json', 'user-agent': 'k6-soak-test/1.0' },
         tags: { endpoint: 'login' },
         timeout: '5s',
     };
@@ -62,9 +62,9 @@ export default function (data) {
             });
             const params = {
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${authToken}`,
-                    'User-Agent': 'k6-soak-test/1.0',
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${authToken}`,
+                    'user-agent': 'k6-soak-test/1.0',
                 },
                 tags: { type: 'create' },
                 timeout: '5s',
@@ -86,7 +86,7 @@ export default function (data) {
         // 2. List Tasks
         group('List Tasks', () => {
             const params = {
-                headers: { 'Authorization': `Bearer ${authToken}` },
+                headers: { 'authorization': `Bearer ${authToken}` },
                 tags: { type: 'list' },
                 timeout: '5s',
             };
@@ -114,8 +114,8 @@ export default function (data) {
                 });
                 const params = {
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${authToken}`,
+                        'content-type': 'application/json',
+                        'authorization': `Bearer ${authToken}`,
                     },
                     tags: { type: 'update' },
                     timeout: '5s',
@@ -136,7 +136,7 @@ export default function (data) {
         if (createdTaskId) {
             group('Delete Task', () => {
                 const params = {
-                    headers: { 'Authorization': `Bearer ${authToken}` },
+                    headers: { 'authorization': `Bearer ${authToken}` },
                     tags: { type: 'delete' },
                     timeout: '5s',
                 };

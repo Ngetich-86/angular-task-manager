@@ -44,6 +44,7 @@ export const checkRoles = (requiredRole: RequiredRole): MiddlewareHandler => {
 
         // Accept both header casings
         const authHeader = c.req.header("authorization") || c.req.header("Authorization");
+        console.log('Auth header received:', authHeader);
 
         // Check if authorization header exists and has Bearer format
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -59,7 +60,7 @@ export const checkRoles = (requiredRole: RequiredRole): MiddlewareHandler => {
 
         // Verify and decode token
         const decoded = verifyToken(token);
-        console.log('☸☸☸🕉🕉🕉☪☪🕎🕎Decoded JWT in middleware:', decoded);
+        console.log('Decoded JWT in middleware:', decoded);
         if (!decoded) {
             return c.json({ error: "Unauthorized - Invalid or expired token" }, 401);
         }
