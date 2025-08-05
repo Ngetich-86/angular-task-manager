@@ -1,0 +1,2 @@
+# Db connection test
+GET http://localhost:5000/test-db

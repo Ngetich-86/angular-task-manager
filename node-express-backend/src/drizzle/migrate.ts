@@ -4,6 +4,10 @@ import db, { client } from "./db"
 
 async function migration() {
     console.log("......Migrations Started......");
+    // Verify connection first
+    await client.connect();
+    console.log("✅ Database connection established");
+    //run migration
     await migrate(db, { migrationsFolder: __dirname + "/migrations" });
     await client.end();
     console.log("......Migrations Completed......");
