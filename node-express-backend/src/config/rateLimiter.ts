@@ -9,7 +9,7 @@ const rateLimiter = new RateLimiterMemory({
 export const rateLimiterMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     try {
         await rateLimiter.consume(req.ip || 'unknown')
-        console.log(`Rate limit check passed for IP: ${req.ip}`);
+        console.log(`Rate limit check passed💚 for IP: ${req.ip}`);
         next()
     } catch (error) {
         res.status(429).json({ error: 'Too many requests, please try again later.' });

@@ -3,7 +3,6 @@ import {
     createUserService, 
     getUserByEmailService, 
     userLoginService, 
-    verifyUserService, 
     getAllUsersService, 
     updateUserByIdService, 
     getUserByIdService,

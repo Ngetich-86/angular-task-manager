@@ -49,3 +49,12 @@ export const tasks = pgTable("tasks", {
 // infer types
 export type TIUser = typeof users.$inferInsert
 export type TSUser = typeof users.$inferSelect
+export type TICategory = typeof categories.$inferInsert
+export type TSCategory = typeof categories.$inferSelect
+export type TITask = typeof tasks.$inferInsert
+export type TSTask = typeof tasks.$inferSelect
+
+// Type aliases for better readability
+export type User = TSUser
+export type Category = TSCategory
+export type Task = TSTask

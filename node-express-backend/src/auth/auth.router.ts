@@ -9,19 +9,19 @@ import {
 } from './auth.controller';
 import { adminRoleAuth, userRoleAuth, bothRoleAuth } from '../middleware/bearAuth';
 
-const router = Router();
+const AuthRouter = Router();
 
 // Public routes (no authentication required)
-router.post('/register', createUserController);
-router.post('/login', loginUserController);
-router.use(bothRoleAuth); // Applies to all routes below
+AuthRouter.post('/register', createUserController);
+AuthRouter.post('/login', loginUserController);
 
-router.use(adminRoleAuth); // All routes below require admin role
+AuthRouter.use(bothRoleAuth); // Applies to all routes below
 
-router.get('/users', getAllUsersController);
-router.get('/users/:id', getUserByIdController);
-router.put('/users/:id', updateUserByIdController);
-router.post('/users/:id/deactivate', deactivateUserController);
-// router.post('/users/:id/reactivate', reactivateUserController);
+AuthRouter.use(adminRoleAuth); // All routes below require admin role
 
-export default router;
+AuthRouter.get('/users', getAllUsersController);
+AuthRouter.get('/users/:id', getUserByIdController);
+AuthRouter.put('/users/:id', updateUserByIdController);
+AuthRouter.post('/users/:id/deactivate', deactivateUserController);
+
+export default AuthRouter;

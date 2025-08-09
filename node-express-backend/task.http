@@ -1,2 +1,75 @@
 # Db connection test
 GET http://localhost:5000/test-db
+
+# Register a new user
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "fullname": "Gideon Ngetich",
+  "email": "gideon.ngetich@outlook.com",
+  "password": "password123"
+}
+
+###
+
+# Register another user (admin)
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "fullname": "Admin User",
+  "email": "admin@example.com",
+  "password": "admin123",
+  "role": "admin"
+}
+
+###
+
+# Login with user credentials
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "email": "gideon.ngetich@outlook.com",
+  "password": "password123"
+}
+
+###
+
+# Login with admin credentials
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
+
+###
+
+# Get all users (requires authentication)
+GET http://localhost:3000/allusers
+# Authorization: Bearer your_jwt_token_here
+
+###
+
+# Get user by ID
+GET http://localhost:3000/user/1
+# Authorization: Bearer your_jwt_token_here
+
+###
+
+# Update user
+PUT http://localhost:3000/user/1
+# Authorization: Bearer your_jwt_token_here
+Content-Type: application/json
+
+{
+  "fullname": "Ngetich Updated",
+  "email": "gideon.ngetich@outlook.com"
+}
+
+###
+
+### Task Management Tests ###

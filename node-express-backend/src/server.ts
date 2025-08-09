@@ -4,7 +4,9 @@ import { logger } from './config/logger';
 import { rateLimiterMiddleware } from './config/rateLimiter';
 import db from './drizzle/db';
 import { users } from './drizzle/schema';
-
+import cors from 'cors'
+import AuthRouter from './auth/auth.router';
+import TasksRouter from './tasks/tasks.router';
 
 const app = express();
 const PORT = process.env.PORT || 7000;
@@ -30,11 +32,18 @@ app.get('/test-db', async (req, res) => {
 app.use(express.json());
 app.use(logger);
 app.use(rateLimiterMiddleware);
+app.use(cors({
+        origin: '*',
+        methods: ["GET", "POST", "PUT", "DELETE"],
+    }))
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello, TypeScript Express Server!');
 });
+
+app.use('/auth', AuthRouter);
+app.use('/tasks', TasksRouter);
 
 // Start server
 app.listen(PORT, () => {
