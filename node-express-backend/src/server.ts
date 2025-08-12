@@ -7,6 +7,7 @@ import { users } from './drizzle/schema';
 import cors from 'cors'
 import AuthRouter from './auth/auth.router';
 import TasksRouter from './tasks/tasks.router';
+import CategoryRouter from './category/category.router';
 
 const initilizeApp = () => {
     const app = express();
@@ -39,6 +40,7 @@ const initilizeApp = () => {
     // routes
     app.use('/auth', AuthRouter);
     app.use('/tasks', TasksRouter);
+    app.use('/categories', CategoryRouter);
 
     app.get('/', (req, res) => {
         res.send('Hello, World!');
