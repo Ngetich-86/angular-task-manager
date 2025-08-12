@@ -15,7 +15,10 @@ export const sendEmail = async (
             auth: { // Authentication details for the email account
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASSWORD
-            }
+            },
+            connectionTimeout: 10000, // 10 seconds timeout
+            greetingTimeout: 10000, // 10 seconds timeout
+            socketTimeout: 10000 // 10 seconds timeout
         });
 
         const mailOptions: nodemailer.SendMailOptions = { // Mail options for the email to be sent
@@ -37,6 +40,7 @@ export const sendEmail = async (
             return 'Email server error';
         }
     } catch (error: any) {
+        console.error('Email sending error:', error);
         return JSON.stringify(error.message, null, 500);
     }
 };

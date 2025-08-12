@@ -4,14 +4,29 @@ import { users } from "../drizzle/schema";
 import type { TIUser } from "../drizzle/schema";
 
 export const createUserService = async (user: TIUser) => {
-    await db.insert(users).values(user);
-    return "User created successfully";
+    try {
+        console.log("Creating user:", { email: user.email, fullname: user.fullname });
+        const result = await db.insert(users).values(user).returning();
+        console.log("User created successfully:", result);
+        return result[0]; // Return the created user
+    } catch (error) {
+        console.error("Error creating user:", error);
+        throw error;
+    }
 };
 
 export const getUserByEmailService = async (email: string) => {
-    return await db.query.users.findFirst({
-        where: eq(users.email, email)
-    });
+    try {
+        console.log("Checking if user exists with email:", email);
+        const result = await db.query.users.findFirst({
+            where: eq(users.email, email)
+        });
+        console.log("User lookup result:", result ? "User found" : "User not found");
+        return result;
+    } catch (error) {
+        console.error("Error checking user by email:", error);
+        throw error;
+    }
 };
 
 export const verifyUserService = async (email: string) => {

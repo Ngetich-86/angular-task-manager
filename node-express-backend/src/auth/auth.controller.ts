@@ -16,46 +16,63 @@ import { sendEmail } from "../config/mailer";
 // Create a user controller
 export const createUserController = async (req: Request, res: Response) => {
     try {
+        console.log("Registration request received:", { body: req.body });
+        
         const user = req.body;
         const password = user.password;
+        
+        console.log("Hashing password...");
         const hashedPassword = await bcrypt.hash(password, 10);
         user.password = hashedPassword;
         user.isActive = true; // Set user as active by default
 
+        console.log("Checking if user already exists...");
         const existingUser = await getUserByEmailService(user.email);
         if (existingUser) {
+            console.log("User already exists:", user.email);
             return res.status(400).json({ message: "User already exists" });
         }
 
+        console.log("Creating user in database...");
         const createdUser = await createUserService(user);
+        console.log("User created successfully:", createdUser);
         
-        // Send welcome email (without verification code)
-        try {
-            await sendEmail(
-                user.email,
-                "Welcome to our platform",
-                `Hello ${user.fullname}, your account has been created successfully!`,
-                `<div>
-                <h2>Welcome ${user.fullname},</h2>
-                <p>Your account has been created successfully!</p>
-                <p>You can now log in and start using our services.</p>
-                </div>`
-            );
-        } catch (emailError) {
-            console.error("Failed to send welcome email:", emailError);
+        // Send welcome email only if email configuration is available
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
+            console.log("Email configuration found, sending welcome email...");
+            try {
+                await sendEmail(
+                    user.email,
+                    "Welcome to our platform",
+                    `Hello ${user.fullname}, your account has been created successfully!`,
+                    `<div>
+                    <h2>Welcome ${user.fullname},</h2>
+                    <p>Your account has been created successfully!</p>
+                    <p>You can now log in and start using our services.</p>
+                    </div>`
+                );
+                console.log("Welcome email sent successfully");
+            } catch (emailError) {
+                console.error("Failed to send welcome email:", emailError);
+                // Don't fail the registration if email fails
+            }
+        } else {
+            console.log("Email configuration not found, skipping welcome email");
         }
 
+        console.log("Sending success response...");
         return res.status(201).json({ 
             message: "User created successfully",
-            // user: {
-            //     id: createdUser.id,
-            //     fullname: createdUser.fullname,
-            //     email: createdUser.email,
-            //     role: createdUser.role
-            // }
+            user: {
+                id: createdUser.id,
+                fullname: user.fullname,
+                email: user.email,
+                role: user.role || 'user'
+            }
         });
 
     } catch (error: any) {
+        console.error("Registration error:", error);
         return res.status(500).json({ error: error.message });
     }
 };
