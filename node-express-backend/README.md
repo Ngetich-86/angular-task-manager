@@ -110,6 +110,10 @@ The server will start on `http://localhost:5000`
 | PUT | `/categories/:id` | Update category | Yes |
 | DELETE | `/categories/:id` | Delete category | Yes |
 
+
+## 🧪 Test Cases
+![Test Cases](images_tests/test-cases.png)
+
 ## 🧪 Testing Suite
 
 Our comprehensive testing strategy ensures code quality, reliability, and performance across all application layers.
