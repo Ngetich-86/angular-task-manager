@@ -112,7 +112,7 @@ The server will start on `http://localhost:5000`
 
 
 ## 🧪 Test Cases
-![Test Cases](images_tests/test-cases.png)
+![Test Cases](image_tests/test-cases.png)
 
 ## 🧪 Testing Suite
 
