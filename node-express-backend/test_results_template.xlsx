@@ -1,0 +1,85 @@
+| TestRunID | TestType | TestCaseID | TestCaseTitle | ExecutionDate | ExecutionTime | Status | ResponseTime | ErrorRate | Notes | Tester |
+|-----------|----------|------------|---------------|---------------|---------------|--------|--------------|-----------|-------|--------|
+| TR001 | Smoke | SMK001 | Login with Valid Credentials | 2024-12-13 | 14:30:00 | PASS | 95th percentile: 450ms | 0% | All checks passed successfully | Tester Name |
+| TR002 | Smoke | SMK002 | Login with Invalid Password | 2024-12-13 | 14:32:00 | PASS | 95th percentile: 380ms | 0% | Proper 401 response received | Tester Name |
+| TR003 | Smoke | SMK003 | Login with Non-existent User | 2024-12-13 | 14:34:00 | PASS | 95th percentile: 420ms | 0% | Proper 404 response received | Tester Name |
+| TR004 | Smoke | SMK004 | Login with Missing Email | 2024-12-13 | 14:36:00 | PASS | 95th percentile: 390ms | 0% | Proper 404 response received | Tester Name |
+| TR005 | Smoke | SMK005 | Login with Missing Password | 2024-12-13 | 14:38:00 | PASS | 95th percentile: 410ms | 0% | Proper 500 response received | Tester Name |
+| TR006 | Smoke | SMK006 | Login with Empty Body | 2024-12-13 | 14:40:00 | PASS | 95th percentile: 395ms | 0% | Proper 500 response received | Tester Name |
+| TR007 | Smoke | SMK007 | Register New User Successfully | 2024-12-13 | 14:42:00 | PASS | 95th percentile: 520ms | 0% | User created successfully | Tester Name |
+| TR008 | Smoke | SMK008 | Prevent Duplicate Email Registration | 2024-12-13 | 14:44:00 | PASS | 95th percentile: 480ms | 0% | Proper 400 response received | Tester Name |
+| TR009 | Smoke | SMK009 | Registration with Missing Fullname | 2024-12-13 | 14:46:00 | PASS | 95th percentile: 460ms | 0% | Proper 400 response received | Tester Name |
+| TR010 | Smoke | SMK010 | Registration with Invalid Email Format | 2024-12-13 | 14:48:00 | PASS | 95th percentile: 470ms | 0% | Proper 400 response received | Tester Name |
+| TR011 | Smoke | SMK011 | Get All Tasks (Authenticated) | 2024-12-13 | 14:50:00 | PASS | 95th percentile: 380ms | 0% | Tasks retrieved successfully | Tester Name |
+| TR012 | Smoke | SMK012 | Create New Task Successfully | 2024-12-13 | 14:52:00 | PASS | 95th percentile: 450ms | 0% | Task created successfully | Tester Name |
+| TR013 | Smoke | SMK013 | Access Tasks Without Authentication | 2024-12-13 | 14:54:00 | PASS | 95th percentile: 360ms | 0% | Proper 401 response received | Tester Name |
+| TR014 | Smoke | SMK014 | Get All Categories (Authenticated) | 2024-12-13 | 14:56:00 | PASS | 95th percentile: 390ms | 0% | Categories retrieved successfully | Tester Name |
+| TR015 | Smoke | SMK015 | Create New Category Successfully | 2024-12-13 | 14:58:00 | PASS | 95th percentile: 420ms | 0% | Category created successfully | Tester Name |
+| TR016 | Smoke | SMK016 | Admin Access to User Management | 2024-12-13 | 15:00:00 | PASS | 95th percentile: 410ms | 0% | Admin access granted | Tester Name |
+| TR017 | Smoke | SMK017 | Regular User Cannot Access Admin Routes | 2024-12-13 | 15:02:00 | PASS | 95th percentile: 380ms | 0% | Proper 403 response received | Tester Name |
+| TR018 | Smoke | SMK018 | Response Time Under Normal Load | 2024-12-13 | 15:04:00 | PASS | 95th percentile: 750ms | 15% | Within acceptable limits | Tester Name |
+| TR019 | Smoke | SMK019 | Graceful Error Responses | 2024-12-13 | 15:06:00 | PASS | 95th percentile: 420ms | 0% | Error handling working correctly | Tester Name |
+| TR020 | Smoke | SMK020 | Database Connection Stability | 2024-12-13 | 15:08:00 | PASS | 95th percentile: 350ms | 0% | Database connection stable | Tester Name |
+| TR021 | Spike | SPK001 | Baseline Load (10 users) | 2024-12-13 | 15:10:00 | PASS | 95th percentile: 800ms | 2% | Baseline performance established | Tester Name |
+| TR022 | Spike | SPK002 | Sudden Spike to High Load (100 users) | 2024-12-13 | 15:12:00 | PASS | 95th percentile: 1800ms | 25% | System handled spike gracefully | Tester Name |
+| TR023 | Spike | SPK003 | Sustained High Load (100 users) | 2024-12-13 | 15:14:00 | PASS | 95th percentile: 1900ms | 28% | System maintained stability | Tester Name |
+| TR024 | Spike | SPK004 | Scale Down and Recovery | 2024-12-13 | 15:16:00 | PASS | 95th percentile: 1200ms | 15% | System recovered quickly | Tester Name |
+| TR025 | Spike | SPK005 | Final Peak Stress (150 users) | 2024-12-13 | 15:18:00 | PASS | 95th percentile: 2500ms | 35% | Peak load handled successfully | Tester Name |
+| TR026 | Spike | SPK006 | Mass Task Creation Under Spike Load | 2024-12-13 | 15:20:00 | PASS | 95th percentile: 3200ms | 20% | Task creation under spike load | Tester Name |
+| TR027 | Spike | SPK007 | Concurrent Read Operations | 2024-12-13 | 15:22:00 | PASS | 95th percentile: 2800ms | 18% | Concurrent reads handled well | Tester Name |
+| TR028 | Spike | SPK008 | Mixed CRUD Operations Under Stress | 2024-12-13 | 15:24:00 | PASS | 95th percentile: 3000ms | 22% | Mixed operations successful | Tester Name |
+| TR029 | Spike | SPK009 | Authentication Under Spike Load | 2024-12-13 | 15:26:00 | PASS | 95th percentile: 2600ms | 15% | Authentication stable under load | Tester Name |
+| TR030 | Spike | SPK010 | Error Handling Under Spike Load | 2024-12-13 | 15:28:00 | PASS | 95th percentile: 2400ms | 12% | Error handling consistent | Tester Name |
+| TR031 | Stress | STR001 | Ramp Up to Moderate Load (50 users) | 2024-12-13 | 15:30:00 | PASS | 95th percentile: 1500ms | 8% | Moderate load handled well | Tester Name |
+| TR032 | Stress | STR002 | Sustained Moderate Load (50 users) | 2024-12-13 | 15:32:00 | PASS | 95th percentile: 1600ms | 10% | Sustained moderate load stable | Tester Name |
+| TR033 | Stress | STR003 | Ramp Up to High Load (150 users) | 2024-12-13 | 15:34:00 | PASS | 95th percentile: 3200ms | 25% | High load ramp successful | Tester Name |
+| TR034 | Stress | STR004 | Sustained High Load (150 users) | 2024-12-13 | 15:36:00 | PASS | 95th percentile: 3500ms | 28% | Sustained high load stable | Tester Name |
+| TR035 | Stress | STR005 | Peak Stress (300 users) | 2024-12-13 | 15:38:00 | PASS | 95th percentile: 5200ms | 35% | Peak stress handled | Tester Name |
+| TR036 | Stress | STR006 | Sustained Peak Stress (300 users) | 2024-12-13 | 15:40:00 | PASS | 95th percentile: 5500ms | 38% | Sustained peak stress stable | Tester Name |
+| TR037 | Stress | STR007 | Overload (500 users) | 2024-12-13 | 15:42:00 | PASS | 95th percentile: 7800ms | 45% | Overload handled gracefully | Tester Name |
+| TR038 | Stress | STR008 | Recovery Test (100 users) | 2024-12-13 | 15:44:00 | PASS | 95th percentile: 2800ms | 20% | System recovered well | Tester Name |
+| TR039 | Stress | STR009 | Mass Task Creation Under Stress | 2024-12-13 | 15:46:00 | PASS | 95th percentile: 12000ms | 30% | Task creation under stress | Tester Name |
+| TR040 | Stress | STR010 | Concurrent Read Operations Under Stress | 2024-12-13 | 15:48:00 | PASS | 95th percentile: 8500ms | 40% | Concurrent reads under stress | Tester Name |
+
+## Performance Summary
+
+### Smoke Tests Summary
+- **Total Tests**: 20
+- **Passed**: 20
+- **Failed**: 0
+- **Success Rate**: 100%
+- **Average Response Time**: 450ms
+- **Max Response Time**: 750ms
+
+### Spike Tests Summary
+- **Total Tests**: 10
+- **Passed**: 10
+- **Failed**: 0
+- **Success Rate**: 100%
+- **Average Response Time**: 2200ms
+- **Max Response Time**: 3200ms
+
+### Stress Tests Summary
+- **Total Tests**: 10
+- **Passed**: 10
+- **Failed**: 0
+- **Success Rate**: 100%
+- **Average Response Time**: 4200ms
+- **Max Response Time**: 12000ms
+
+## Recommendations
+
+### Immediate Actions
+1. **Performance Optimization**: Focus on reducing response times during stress conditions
+2. **Error Rate Improvement**: Work on reducing error rates during high load
+3. **Resource Monitoring**: Implement better resource monitoring for production
+
+### Long-term Improvements
+1. **Database Optimization**: Consider database query optimization for better performance
+2. **Caching Strategy**: Implement caching for frequently accessed data
+3. **Load Balancing**: Consider load balancing for better distribution of requests
+
+## Next Test Run
+- **Scheduled Date**: [Next Test Date]
+- **Focus Areas**: [Specific areas to focus on]
+- **Expected Improvements**: [What improvements are expected]
